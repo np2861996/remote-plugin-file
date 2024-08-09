@@ -1,0 +1,56 @@
+Remote Plugins plugin
+=====================
+
+The Remote Plugins plugin allows you to manage WordPress plugins remotely using a REST API. You can list available plugins, activate a plugin, and deactivate a plugin through specified endpoints.
+
+Requirements
+
+WordPress site
+
+Knowledge of installing and activating WordPress plugins
+
+Postman or cURL for testing
+
+Endpoints
+
+1. List Available Plugins
+
+Endpoint: /wp-json/kd/v1/listplugins
+Method: GET
+Description: This endpoint returns a list of all available plugins in the WordPress installation.
+
+2. Activate a Plugin
+
+Endpoint: /wp-json/kd/v1/activate?plugin=<name>
+Method: POST
+Description: This endpoint activates the specified plugin.
+Parameters:
+plugin: The slug name of the plugin to be activated.
+Restrictions: The plugin name must be validated before attempting activation.
+
+3. Deactivate a Plugin
+
+Endpoint: /wp-json/kd/v1/deactivate?plugin=<name>
+Method: POST
+Description: This endpoint deactivates the specified plugin.
+Parameters:
+plugin: The slug name of the plugin to be deactivated.
+Restrictions: The plugin name must be validated before attempting deactivation.
+
+Security
+To access these endpoints, you must use the bearer token for verification. Only requests with this token will be authenticated. The token is:
+
+Copy code
+WxScDzJOYXEAcCmDSSDuieM48WpTeZGC
+
+Error Handling
+Invalid plugin names will return a clear error message.
+If the plugin is already activated or deactivated, an appropriate message will be returned.
+
+Testing
+Use tools like Postman or cURL to test your endpoints. No code for testing should be added to the plugin itself.
+
+Example Endpoints
+List Plugins: https://your-site.com/wp-json/kd/v1/listplugins
+Activate Plugin: https://your-site.com/wp-json/kd/v1/activate?plugin=plugin-slug
+Deactivate Plugin: https://your-site.com/wp-json/kd/v1/deactivate?plugin=plugin-slug
